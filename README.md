@@ -7,7 +7,7 @@
 ## AIM :
 To Implement Transfer Learning for classification using VGG-19 architecture.
 
-## Problem Statement and Dataset
+## Problem Statement and Dataset :
 Develop an image classification model using transfer learning with the pre-trained VGG19 model.
 
 ## DESIGN STEPS :
@@ -51,11 +51,9 @@ transform = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor(),
     transforms.Normalize([0.485, 0.456, 0.406],
-                         [0.229, 0.224, 0.225])
-])
+                         [0.229, 0.224, 0.225])])
 
 !unzip -qq ./chip_data.zip -d data
-
 dataset_path ="./data/dataset"
 
 train_dataset = datasets.ImageFolder(root=f"{dataset_path}/train", transform=transform)
@@ -184,11 +182,9 @@ def test_model(model, test_loader):
             all_labels.extend(labels.cpu().numpy())
 
     accuracy = correct / total
-    print(f"\nTest Accuracy: {accuracy:.4f}")
+    print(f"Test Accuracy: {accuracy:.4f}")
 
     cm = confusion_matrix(all_labels, all_preds)
-    print("\nName: SURYA P")
-    print("Register Number: 212224230280\n")
     plt.figure(figsize=(8,6))
     sns.heatmap(cm, annot=True, fmt='d',
                 xticklabels=train_dataset.classes,
@@ -211,22 +207,24 @@ test_model(model, test_loader)
 
 <img width="1586" height="450" alt="image" src="https://github.com/user-attachments/assets/78008e77-75ef-4d71-8eea-da14475c0a2e" />
 
-
 ### Training Loss, Validation Loss Vs Iteration Plot :
 
+<img width="568" height="295" alt="image" src="https://github.com/user-attachments/assets/c9c27fa4-e76f-41ca-aae2-0bb98cc18e40" />
+
+<img width="1042" height="776" alt="image" src="https://github.com/user-attachments/assets/ed831ba0-ec3d-4b5f-aea2-83ed7cdec39e" />
 
 ### Confusion Matrix :
 
+<img width="1019" height="809" alt="image" src="https://github.com/user-attachments/assets/457b0aea-53af-4a84-bcd7-11235e4817e7" />
 
 ### Classification Report :
 
+<img width="638" height="342" alt="image" src="https://github.com/user-attachments/assets/0a97d862-ca7b-476b-96f7-4c716f4fb112" />
 
 ### New Sample Prediction :
 
 
 ```python
-print("\nName: SURYA P")
-print("Register Number: 212224230280\n")
 def predict_image(model, image_index, dataset):
     model.eval()
 
@@ -258,6 +256,10 @@ predict_image(model, 25, test_dataset)
 predict_image(model, 55, test_dataset)
 
 ```
+
+<img width="536" height="613" alt="image" src="https://github.com/user-attachments/assets/57c10418-aa8b-49b5-829c-f5d86716935f" />
+
+<img width="514" height="583" alt="image" src="https://github.com/user-attachments/assets/39bc21e4-8985-44f5-a828-2460f4c8b8e9" />
 
 ## RESULT :
 The VGG-19 model was successfully trained and optimized to classify defected and non-defected capacitors.
